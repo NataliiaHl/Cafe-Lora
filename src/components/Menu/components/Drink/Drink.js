@@ -26,9 +26,8 @@ element.innerHTML = `
 `
 
 element.querySelector('.layer').append(
-    Layer({ 
-    color: '#feeeca',
-    label: 'mléčná pěna'})
+    ...layers.map((layer) => Layer({ color: layer.color, label: layer.label }))
+    
 )
 
 return element

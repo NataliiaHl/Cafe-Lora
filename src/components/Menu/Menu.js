@@ -2,7 +2,8 @@ import './style.css' ;
 import { Drink } from './components/Drink/Drink.js';
 
 
-export const Menu = () => {
+export const Menu = (props) => {
+    const { drinks } = props
 
     const element = document.createElement('section')
     element.classList.add('menu')
@@ -21,22 +22,26 @@ export const Menu = () => {
             </div>
         </div>
     `
+    if (drinks === 'loading') {
+        fetch(`https://cafelora.kodim.app/api/me/drinks`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          }
+        ).then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+            element.querySelector('.drinks-list').append(
+                ...data.result.map((item) => Drink({id: item.id, name: item.name, ordered: item.ordered, image: item.image, layers: item.layers }))
+            )
+        
+        })
 
-    element.querySelector('.drinks-list').append(
-        Drink({id: '1', 
-        name: 'romano', 
-        ordered: true, 
-        image: 'https://cafelora.kodim.app/assets/cups/romano.png', 
-        layers: [
-            {
-              color: '#fbdf5b',
-              label: 'citrón',
-            },
-            {
-              color: '#613916',
-              label: 'espresso',
-            },
-          ]})
-    )
+        return element
+    }
+
+    
     return element
 }
