@@ -21,7 +21,7 @@ element.innerHTML = `
     <div class="drink__controls">
     <button class="order-btn">
         Objednat
-        </button>
+    </button>
     </div>
 `
 
@@ -29,6 +29,38 @@ element.querySelector('.layer').append(
     ...layers.map((layer) => Layer({ color: layer.color, label: layer.label }))
     
 )
+
+const btnEl = element.querySelector('.order-btn')
+
+if (ordered) {
+    btnEl.classList.add('order-btn--ordered')
+    btnEl.textContent = 'Zrušit'
+} else {
+    btnEl.classList.remove('order-btn--ordered')
+    btnEl.textContent = 'Objednat'
+}
+
+const orderDrink = () => {
+    fetch(`https://cafelora.kodim.app/api/me/drinks/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+      body: JSON.stringify({
+        ordered: !ordered
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        element.replaceWith(
+          Drink( data.result )
+        );
+      });
+    
+}
+
+btnEl.addEventListener('click', orderDrink)
 
 return element
 
