@@ -23,7 +23,11 @@ export const Menu = () => {
     `
 
     element.querySelector('.drinks-list').append(
-        Drink({id: '1', name: 'romano', ordered: true, image: 'https://cafelora.kodim.app/assets/cups/romano.png', layers: [
+        Drink({id: '1', 
+        name: 'romano', 
+        ordered: true, 
+        image: 'https://cafelora.kodim.app/assets/cups/romano.png', 
+        layers: [
             {
               color: '#fbdf5b',
               label: 'citrón',
