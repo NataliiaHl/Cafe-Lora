@@ -32,7 +32,6 @@ export const Menu = (props) => {
           }
         ).then((response) => response.json())
         .then((data) => {
-            console.log(data)
             element.querySelector('.drinks-list').append(
                 ...data.result.map((item) => Drink({id: item.id, name: item.name, ordered: item.ordered, image: item.image, layers: item.layers }))
             )

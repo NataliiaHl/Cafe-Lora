@@ -1,6 +1,7 @@
 import './style.css';
 
-export const Header = () => {
+export const Header = (props) => {
+    const { showMenu } = props
 
     const element = document.createElement('header')
 
