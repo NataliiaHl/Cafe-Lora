@@ -18,7 +18,7 @@ export const Menu = (props) => {
             </div>
 
             <div class="order-detail">
-                <a href="/objednavka">Detail objednávky</a>
+                <a href="objednavka">Detail objednávky</a>
             </div>
         </div>
     `
