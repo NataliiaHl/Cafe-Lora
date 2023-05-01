@@ -1,0 +1,7 @@
+.order__items {
+    margin: 2rem 0 4rem 0;
+  }
+  
+  .empty-order--hide {
+    display: none;
+}

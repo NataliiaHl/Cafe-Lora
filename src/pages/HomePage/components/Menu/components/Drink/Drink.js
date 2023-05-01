@@ -14,7 +14,7 @@ element.innerHTML = `
         </div>
         <div class="drink__info">
             <h3>${name}</h3>
-            <div class="layer">
+            <div class="layers">
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@ element.innerHTML = `
     </div>
 `
 
-element.querySelector('.layer').append(
+element.querySelector('.layers').append(
     ...layers.map((layer) => Layer({ color: layer.color, label: layer.label }))
     
 )
