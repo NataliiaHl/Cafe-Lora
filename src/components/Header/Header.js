@@ -29,7 +29,7 @@ export const Header = (props) => {
             <div class="navigation">
             <button class="nav-btn"></button>
             <nav class="rollout-nav nav-closed">
-                <a href="">domů</a>
+                <a href=".">domů</a>
             </nav>
             </div>
         </div>
